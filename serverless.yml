@@ -1,0 +1,24 @@
+service:
+  name: chrss
+#app: your-app-name
+#tenant: your-tenant-name
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+  - webpack-node-externals
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  profile: serverless
+  tracing:
+    lambda: true
+
+functions:
+  hello:
+    handler: src/users.test
+    events:
+      - http:
+          path: hello
+          method: get
