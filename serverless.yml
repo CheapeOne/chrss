@@ -7,6 +7,7 @@ service:
 plugins:
   - serverless-webpack
   - webpack-node-externals
+  - serverless-offline
 
 provider:
   name: aws
