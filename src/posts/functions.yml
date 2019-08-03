@@ -1,0 +1,6 @@
+getAllPosts:
+  handler: src/posts/handlers.getAll
+  events:
+    - http:
+      path: posts
+      method: get
