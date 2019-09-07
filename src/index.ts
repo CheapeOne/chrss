@@ -1,14 +1,15 @@
+import dotenv from 'dotenv';
 import * as express from 'express';
 import { Request, Response } from 'express';
+import FeedRoutes from './feeds/routes';
+
+// initialize configuration
+dotenv.config();
 
 const app = express();
-const port = 8080;
-console.log('hey there!');
+const port = process.env.SERVER_PORT || 9000;
 
-// define a route handler for the default home page
-app.get('/', (req, res) => {
-  res.send('Hello world!');
-});
+app.use(FeedRoutes);
 
 // start the Express server
 app.listen(port, () => {

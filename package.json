@@ -6,24 +6,37 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "node ."
+    "build": "tsc",
+    "start": "node",
+    "dev": "nodemon"
   },
   "dependencies": {
+    "dotenv": "^8.1.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.1",
+    "@types/node": "^12.7.3",
     "jest": "24.7.1",
+    "nodemon": "^1.19.2",
     "prettier": "1.17.0",
+    "ts-loader": "^6.0.4",
     "ts-node": "^8.3.0",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
-    "ts-loader": "^6.0.4",
-    "typescript": "3.4.3",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0",
-    "webpack-node-externals": "^1.7.2"
+    "typescript": "3.4.3"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "ts-node ./src/index.ts",
+    "ext": "ts"
   }
 }
