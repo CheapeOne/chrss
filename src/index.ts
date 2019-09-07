@@ -1,13 +1,14 @@
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
+import { config } from 'dotenv';
 import * as express from 'express';
 import { Request, Response } from 'express';
 import FeedRoutes from './feeds/routes';
 
-// initialize configuration
-dotenv.config();
+// use .env config
+config();
 
 const app = express();
-const port = process.env.SERVER_PORT || 9000;
+const port = process.env.SERVER_PORT;
 
 app.use(FeedRoutes);
 
