@@ -1,11 +1,15 @@
-import { createServer } from '@marblejs/core';
-import httpListener from './app';
+import * as express from 'express';
+import api from './api';
+import statusRouter from './status';
 import env from './env';
 
-export const server = createServer({
-  hostname: '127.0.0.1',
-  httpListener,
-  port: env.SERVER_PORT,
-});
+const app = express();
 
-server.run();
+app.use('/api/v1', api);
+app.use('/', statusRouter);
+
+const port = env.SERVER_PORT;
+
+app.listen(port, () => {
+  console.log(`Server started at http://localhost:${port}`);
+});
