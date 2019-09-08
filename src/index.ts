@@ -8,8 +8,8 @@ initializeDb();
 
 const app = express();
 
-app.use('/', statusRouter);
 app.use('/api/v1', api);
+app.use('/', statusRouter);
 
 const port = env.SERVER_PORT;
 
