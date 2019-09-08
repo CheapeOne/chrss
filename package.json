@@ -7,7 +7,6 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node",
     "dev": "nodemon",
     "migrate:make": "knex migrate:make -x ts"
   },
@@ -31,18 +30,5 @@
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "3.4.3"
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "**/*.test.ts",
-      "**/*.spec.ts",
-      ".git",
-      "node_modules"
-    ],
-    "watch": [
-      "src"
-    ],
-    "exec": "ts-node ./src/index.ts",
-    "ext": "ts"
   }
 }
