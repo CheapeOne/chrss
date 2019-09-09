@@ -1,12 +1,14 @@
-import { Model as TModel } from 'objection';
+import { Model, QueryBuilder, ModelClass } from 'objection';
 
-export default function createModelMixin(Model: typeof TModel) {
+export default function createModelMixin<M extends Model>(
+  model: ModelClass<M>
+) {
   async function findAll() {
-    return Model.query();
+    return model.query();
   }
 
-  async function findById(id: string) {
-    return Model.query().findById(id);
+  function findById(id: string) {
+    return model.query().findById(id);
   }
 
   return { findAll, findById };

@@ -4,7 +4,7 @@ import FeedsService from './service';
 const feedsRouter = Router();
 
 feedsRouter.get('/', async (req: Request, res: Response) => {
-  const feeds = FeedsService.findAll();
+  const feeds = await FeedsService.findAll();
   res.send(feeds);
 });
 
