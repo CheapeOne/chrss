@@ -1,5 +1,5 @@
 import { Model } from 'objection';
-import * as Knex from 'knex';
+import Knex from 'knex';
 import env from '../env';
 
 const knexConfig = require('../../knexfile');

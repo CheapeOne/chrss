@@ -1,1 +1,1 @@
-export { default as feedsRouter } from './feeds.routes';
+export { default as feedsRouter } from './router';

@@ -1,6 +1,6 @@
 import { Model } from 'objection';
 
-export default class Feed extends Model {
+export default class Feeds extends Model {
   readonly id!: number;
 
   static get tableName() {

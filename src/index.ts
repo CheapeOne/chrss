@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import api from './api';
 import statusRouter from './status';
 import env from './env';

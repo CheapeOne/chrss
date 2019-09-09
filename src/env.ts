@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import * as dotenvParseVariables from 'dotenv-parse-variables';
+import dotenvParseVariables from 'dotenv-parse-variables';
 
 interface Env {
   NODE_ENV: string;
