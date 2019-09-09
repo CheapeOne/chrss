@@ -7,7 +7,7 @@ export default function createModelMixin<M extends Model>(
     return model.query();
   }
 
-  function findById(id: string) {
+  async function findById(id: string) {
     return model.query().findById(id);
   }
 
