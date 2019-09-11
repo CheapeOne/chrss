@@ -1,22 +1,22 @@
 import { Request, Response } from 'express';
 import Router from 'express-promise-router';
-import FeedsService from './service';
+import FeedService from './service';
 
-const feedsRouter = Router();
+const feedRouter = Router();
 
-feedsRouter.get('/', async (req: Request, res: Response) => {
-  const feeds = await FeedsService.findAll();
+feedRouter.get('/', async (req: Request, res: Response) => {
+  const feeds = await FeedService.findAll();
   res.send(feeds);
 });
 
-feedsRouter.get('/:id', async (req: Request, res: Response) => {
-  const feed = await FeedsService.findById(req.params.id);
+feedRouter.get('/:id', async (req: Request, res: Response) => {
+  const feed = await FeedService.findById(req.params.id);
   res.send(feed);
 });
 
-feedsRouter.post('/', async (req: Request, res: Response) => {
-  const createdFeed = await FeedsService.create(req.body);
+feedRouter.post('/', async (req: Request, res: Response) => {
+  const createdFeed = await FeedService.create(req.body);
   res.send(createdFeed);
 });
 
-export default feedsRouter;
+export default feedRouter;

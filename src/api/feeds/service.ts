@@ -8,9 +8,9 @@ async function create(feedData) {
   return newFeed;
 }
 
-const FeedsService = {
+const FeedService = {
   ...modelMixin,
   create,
 };
 
-export default FeedsService;
+export default FeedService;

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { feedsRouter } from './feeds';
+import { feedRouter } from './feeds';
 
 const api = Router();
-api.use('/feeds', feedsRouter);
+api.use('/feeds', feedRouter);
 
 export default api;
