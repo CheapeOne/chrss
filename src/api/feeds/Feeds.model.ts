@@ -1,9 +1,5 @@
 import { Model } from 'objection';
 
-const things = {
-  frunction: () => 'hhehehe',
-};
-
 export default class Feeds extends Model {
   readonly id!: number;
   rss_url: string;
