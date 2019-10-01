@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Logo from './Logo';
 
 const Home: React.FC = () => {
   return (
     <Page>
-      <Logo />
+      <LogoTitle>chrss</LogoTitle>
     </Page>
   );
 };
@@ -16,4 +15,11 @@ const Page = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+`;
+
+const LogoTitle = styled.h1`
+  font-family: 'DM Serif Display', serif;
+  color: ${({ theme }) => theme.dark};
+  font-weight: normal;
+  font-size: 4rem;
 `;
