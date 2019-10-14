@@ -22,3 +22,5 @@ const port = env.SERVER_PORT;
 app.listen(port, () => {
   console.log(`Server started at http://localhost:${port}`);
 });
+
+export default app;
