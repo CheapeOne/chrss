@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { Heading } from 'rebass/styled-components';
+import PostList from './PostList';
+import mockPosts from '../../mocks/posts';
 
 const Home: React.FC = () => {
   return (
     <Page>
       <LogoTitle>chrss</LogoTitle>
+      <PostList posts={mockPosts} />
     </Page>
   );
 };
