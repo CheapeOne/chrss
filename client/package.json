@@ -11,7 +11,7 @@
     "react-scripts": "3.0.1",
     "rebass": "^4.0.6",
     "styled-components": "^4.4.0",
-    "styled-normalize": "^8.0.6",
+    "styled-reset": "^4.0.2",
     "typescript": "3.5.3"
   },
   "devDependencies": {

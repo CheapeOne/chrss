@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
+import { reset } from 'styled-reset';
 
 const theme = {
   dark: '#363636',
@@ -11,7 +11,7 @@ const theme = {
 type ThemeType = typeof theme;
 
 export const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
-  ${normalize}
+  ${reset}
 
   @import url('https://fonts.googleapis.com/css?family=DM+Serif+Display&display=swap');
 

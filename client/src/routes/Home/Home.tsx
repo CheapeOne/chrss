@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Heading } from 'rebass/styled-components';
+import { Heading, Flex } from 'rebass/styled-components';
 import PostList from './PostList';
 import mockPosts from '../../mocks/posts';
 
 const Home: React.FC = () => {
   return (
     <Page>
-      <LogoTitle>chrss</LogoTitle>
+      <Flex justifyContent="center" mt="2rem" mb="3rem">
+        <LogoTitle>chrss</LogoTitle>
+      </Flex>
       <PostList posts={mockPosts} />
     </Page>
   );
@@ -17,8 +19,7 @@ export default Home;
 
 const Page = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
+  padding-bottom: 2rem;
 `;
 
 const LogoTitle = styled(Heading)`
