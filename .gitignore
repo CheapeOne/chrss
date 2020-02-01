@@ -2,7 +2,7 @@
 .DS_Store
 
 # compiled output
-/dist
+dist
 node_modules
 
 # IDE - VSCode
