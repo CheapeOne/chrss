@@ -1,14 +1,8 @@
-@charset "utf-8";
-
-@import './colors.scss';
+// Brand colors
+$cc-red: #f3797c;
+$cc-dark: #363636;
+$cc-blue: #99dadc;
+$cc-light: #fffae1;
 
 // Update Bulma's global variables
 $primary: $cc-red;
-
-:global {
-  @import '~normalize.css';
-  @import '~bulma/sass/utilities/_all.sass';
-
-  @import '~bulma/sass/elements/button.sass';
-  @import '~bulma/sass/elements/title.sass';
-}

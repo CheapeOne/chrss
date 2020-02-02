@@ -15,10 +15,14 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.s(c|a)ss$/,
+        test: /\.scss$/,
         use: [
-          { loader: 'style-loader' },
-          { loader: 'css-modules-typescript-loader' },
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: isDevelopment,
+            },
+          },
           {
             loader: 'css-loader',
             options: {
@@ -47,9 +51,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.html'),
     }),
-    new MiniCssExtractPlugin({
-      filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-      chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
-    }),
+    new MiniCssExtractPlugin(),
   ],
 };
