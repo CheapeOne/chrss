@@ -3,8 +3,10 @@ import styles from './styles.scss';
 
 const Home: React.FC = () => {
   return (
-    <div className={styles.wrapper}>
-      <h1>Hello there</h1>
+    <div className="">
+      <div className="">
+        <h1 className={styles.title}>Hello there</h1>
+      </div>
     </div>
   );
 };

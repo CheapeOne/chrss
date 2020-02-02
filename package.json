@@ -9,6 +9,7 @@
     "start": "webpack-dev-server --mode development --config client/webpack.config.js"
   },
   "dependencies": {
+    "bulma": "^0.8.0",
     "lodash-es": "^4.17.15",
     "normalize.css": "^8.0.1",
     "react": "^16.8.6",
@@ -24,6 +25,7 @@
     "@types/react-router-dom": "^5.1.0",
     "css-loader": "^3.4.2",
     "css-modules-typescript-loader": "^4.0.0",
+    "eslint": "^6.8.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",

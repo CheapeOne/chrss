@@ -15,7 +15,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
+        test: /\.s(c|a)ss$/,
         use: [
           { loader: 'style-loader' },
           { loader: 'css-modules-typescript-loader' },
@@ -34,7 +34,10 @@ module.exports = {
     contentBase: './dist',
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.css', 'scss'],
+    alias: {
+      '#': path.resolve(__dirname, './src'),
+    },
   },
   output: {
     filename: 'bundle.js',
