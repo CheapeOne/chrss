@@ -1,0 +1,12 @@
+@import '#/styles/theme.scss';
+
+.navbar {
+  width: 100%;
+  padding: 2rem;
+  background: $primary;
+  text-align: center;
+
+  h1 {
+    color: white;
+  }
+}

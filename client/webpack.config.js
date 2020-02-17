@@ -16,6 +16,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: /\.global.scss$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -29,6 +30,35 @@ module.exports = {
               modules: true,
             },
           },
+          { loader: 'sass-loader' },
+        ],
+      },
+      {
+        test: /\.global.scss$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              insert: element => {
+                const parent = document.querySelector('head');
+                // eslint-disable-next-line no-underscore-dangle
+                const lastInsertedElement =
+                  window._lastElementInsertedByStyleLoader;
+
+                if (!lastInsertedElement) {
+                  parent.insertBefore(element, parent.firstChild);
+                } else if (lastInsertedElement.nextSibling) {
+                  parent.insertBefore(element, lastInsertedElement.nextSibling);
+                } else {
+                  parent.appendChild(element);
+                }
+
+                // eslint-disable-next-line no-underscore-dangle
+                window._lastElementInsertedByStyleLoader = element;
+              },
+            },
+          },
+          { loader: 'css-loader' },
           { loader: 'sass-loader' },
         ],
       },
