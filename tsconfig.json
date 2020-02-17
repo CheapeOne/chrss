@@ -1,24 +1,26 @@
 {
   "compilerOptions": {
-    "outDir": "./client/dist/",
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "react",
     "sourceMap": true,
-    "baseUrl": "./client",
+    "rootDir": "client",
+    "baseUrl": "client",
+    "types": ["webpack-env", "jest"],
     "paths": {
-      "#/*": ["./src/*"]
-    }
+      "@/*": ["src/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": ["./client/src"]
+  "include": [
+    "client/src/**/*.ts",
+    "client/src/**/*.tsx",
+    "client/src/**/*.vue"
+  ],
+  "exclude": ["node_modules"]
 }
