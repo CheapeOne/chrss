@@ -1,9 +1,9 @@
 import React, { createContext, useState } from 'react';
-import { IPost } from '#/types/api.types';
+import { Post } from '#/types/api.types';
 import usePosts from '#/hooks/usePosts';
 
 interface PostsContext {
-  posts: Array<IPost>;
+  posts: Array<Post>;
   loading: boolean;
   error: string;
 }

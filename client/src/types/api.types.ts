@@ -1,4 +1,4 @@
-export interface IPost {
+export interface Post {
   author?: string;
   categories?: Array<string>;
   description?: string;

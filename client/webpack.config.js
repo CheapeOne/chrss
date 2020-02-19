@@ -6,16 +6,22 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: path.resolve(__dirname, './src/index.tsx'),
-  devtool: 'inline-source-map',
+  // devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: [
+          { loader: 'babel-loader' },
+          {
+            loader: 'linaria/loader',
+            // options: { sourceMap: isDevelopment },
+          },
+        ],
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         exclude: /\.global.scss$/,
         use: [
           {
@@ -27,7 +33,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              // sourceMap: isDevelopment,
             },
           },
           { loader: 'sass-loader' },

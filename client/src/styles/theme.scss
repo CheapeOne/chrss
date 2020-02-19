@@ -6,3 +6,9 @@ $cc-light: #fffae1;
 
 // Update Bulma's global variables
 $primary: $cc-red;
+
+// My global variables
+:root {
+  --primary: #{$cc-red};
+  --background: #{$cc-light};
+}

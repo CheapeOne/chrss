@@ -13,3 +13,5 @@ node_modules
 *.db
 
 yarn-error.log
+
+.linaria-cache
