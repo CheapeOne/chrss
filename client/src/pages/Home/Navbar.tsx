@@ -3,20 +3,20 @@ import { css } from 'linaria';
 
 const Navbar: React.FC = () => {
   return (
-    <div className={styles}>
-      <h1 className={`title ${header}`}>chrss</h1>
+    <div className={navClass}>
+      <h1 className={`title ${headerClass}`}>chrss</h1>
     </div>
   );
 };
 
-const styles = css`
+const navClass = css`
   width: 100%;
   padding: 2rem;
   background: var(--primary);
   text-align: center;
 `;
 
-const header = css`
+const headerClass = css`
   color: white;
 `;
 

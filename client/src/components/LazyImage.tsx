@@ -4,6 +4,7 @@ import cn from 'classnames';
 interface Props {
   src?: string;
   alt?: string;
+  className?: string;
 }
 
 const LazyImage: React.FC<Props> = props => {
@@ -59,7 +60,7 @@ const LazyImage: React.FC<Props> = props => {
       src={imageSrc}
       alt={props.alt}
       onLoad={onLoad}
-      className={cn({ loaded })}
+      className={cn(props.className, loaded)}
     />
   );
 };

@@ -9,9 +9,9 @@ interface Props {
 
 const PostListItem: React.FC<Props> = ({ post }) => {
   return (
-    <div className={styles}>
-      <LazyImage src={post.image} />
-      <div className="details">
+    <div className={wrapperClass}>
+      <LazyImage src={post.image} className={imageClass} />
+      <div className={detailsClass}>
         <div className="title is-4">{post.title}</div>
         <div>{post.description}</div>
         <div>{post.author}</div>
@@ -20,22 +20,22 @@ const PostListItem: React.FC<Props> = ({ post }) => {
   );
 };
 
-const styles = css`
-  height: 8rem;
+const wrapperClass = css`
   padding: 1rem;
   display: flex;
   align-items: center;
+`;
 
-  img {
-    height: 100%;
-    border-radius: 8px;
-    transition: opacity 2s;
-  }
+const imageClass = css`
+  height: 100px;
+  width: 100px;
+  border-radius: 8px;
+  transition: opacity 2s;
+`;
 
-  .details {
-    height: 100%;
-    overflow: hidden;
-  }
+const detailsClass = css`
+  height: 100%;
+  overflow: hidden;
 
   .title {
     white-space: nowrap;
