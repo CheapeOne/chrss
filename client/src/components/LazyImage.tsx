@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { css } from 'linaria';
 import cn from 'classnames';
 
 interface Props {
@@ -8,11 +9,12 @@ interface Props {
 }
 
 const LazyImage: React.FC<Props> = props => {
-  const [imageSrc, setImageSrc] = useState<string | undefined>(placeholder);
+  const [imageSrc, setImageSrc] = useState<string | undefined>();
   const [imageRef, setImageRef] = useState();
   const [loaded, setLoaded] = useState(false);
 
   const onLoad = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    setImageSrc(props.src);
     setLoaded(true);
   };
 
@@ -55,17 +57,35 @@ const LazyImage: React.FC<Props> = props => {
   }, [props.src, imageSrc, imageRef]);
 
   return (
-    <img
-      ref={setImageRef}
-      src={imageSrc}
-      alt={props.alt}
-      onLoad={onLoad}
-      className={cn(props.className, loaded)}
-    />
+    <div className={cn(wrapperClass, props.className)}>
+      <img
+        ref={setImageRef}
+        src={imageSrc}
+        alt={props.alt}
+        onLoad={onLoad}
+        className={cn({ loaded })}
+      />
+    </div>
   );
 };
 
-const placeholder =
-  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
+const wrapperClass = css`
+  position: relative;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.2s linear;
+  }
+
+  img.loaded {
+    opacity: 1;
+  }
+`;
 
 export default LazyImage;
