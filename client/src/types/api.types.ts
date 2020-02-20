@@ -1,4 +1,5 @@
 export interface Post {
+  id?: number;
   author?: string;
   categories?: Array<string>;
   description?: string;

@@ -1,9 +1,17 @@
 import React from 'react';
+import { Post } from '#/types/api.types';
+import PostListItem from './PostListItem';
 
-const PostList: React.FC = () => {
+interface Props {
+  posts: Array<Post>;
+}
+
+const PostList: React.FC<Props> = props => {
   return (
     <div>
-      <h1>chrss</h1>
+      {props.posts.map(post => (
+        <PostListItem key={post.id} post={post} />
+      ))}
     </div>
   );
 };

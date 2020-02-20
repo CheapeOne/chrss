@@ -6,7 +6,7 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: path.resolve(__dirname, './src/index.tsx'),
-  // devtool: 'inline-source-map',
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -15,7 +15,7 @@ module.exports = {
           { loader: 'babel-loader' },
           {
             loader: 'linaria/loader',
-            // options: { sourceMap: isDevelopment },
+            options: { displayName: true },
           },
         ],
         exclude: /node_modules/,
