@@ -24,7 +24,7 @@ const mockPosts = [
   {
     id: 3,
     title:
-      'NASA Invites Media to Final Orion Jettison Motor Test in Huntsville, Alabama',
+      'NASA Invites Media to Final Orion Jettison Motor Test in Huntsville, Alabama NASA Invites Media to Final Orion Jettison Motor Test in Huntsville, Alabama NASA Invites Media to Final Orion Jettison Motor Test in Huntsville, Alabama NASA Invites Media to Final Orion Jettison Motor Test in Huntsville, Alabama',
     link:
       'http://www.nasa.gov/press-release/nasa-invites-media-to-final-orion-jettison-motor-test-in-huntsville-alabama',
     description:

@@ -8,21 +8,30 @@ interface Props {
 }
 
 const PostListItem: React.FC<Props> = ({ post }) => {
+  const clippedTitle = getClippedTitle(post.title);
+
   return (
     <div className={wrapperClass}>
       <LazyImage src={post.image} className={imageClass} />
       <div className={detailsClass}>
-        <div className="title is-size-6">{post.title}</div>
+        <div className="title is-size-6">{clippedTitle}</div>
       </div>
     </div>
   );
 };
 
+function getClippedTitle(title: string) {
+  if (title.length < 128) {
+    return title;
+  }
+
+  return title.substring(0, 127) + '...';
+}
+
 const wrapperClass = css`
-  height: calc(100px + 2rem);
+  min-height: calc(100px + 2rem);
   padding: 1rem;
   display: flex;
-  align-items: center;
 `;
 
 const imageClass = css`
