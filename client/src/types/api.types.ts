@@ -7,3 +7,10 @@ export interface Post {
   link: string;
   title: string;
 }
+
+export interface Tag {
+  id: number;
+  name: string;
+  parent_id?: number;
+  children?: Array<Tag>;
+}
