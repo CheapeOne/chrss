@@ -4,7 +4,7 @@ import { css } from 'linaria';
 const Navbar: React.FC = () => {
   return (
     <div className={navClass}>
-      <h1 className={`title ${headerClass}`}>chrss</h1>
+      <h1 className={`title ${headerClass}`}>/ chrss /</h1>
     </div>
   );
 };
