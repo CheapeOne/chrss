@@ -1,5 +1,6 @@
 const mockPosts = [
   {
+    id: 1,
     title:
       'NASA Highlights Science on Next Northrop Grumman Mission to Space Station',
     link:
@@ -10,6 +11,7 @@ const mockPosts = [
       'http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/iss060e073348.jpeg?itok=YDxTKcKM',
   },
   {
+    id: 2,
     title:
       'NASA Invites Media to Events Highlighting Spacesuits for Moon to Mars',
     link:
@@ -20,8 +22,9 @@ const mockPosts = [
       'http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/xemu-eva-seflie.jpg?itok=VxoL27Sw" length="160553',
   },
   {
+    id: 3,
     title:
-      'NASA Invites Media to Final Orion Jettison Motor Test in Huntsville, Alabama',
+      'NASA Invites Media to Final Orion Jettison Motor Test in Huntsville, Alabama NASA Invites Media to Final Orion Jettison Motor Test in Huntsville, Alabama NASA Invites Media to Final Orion Jettison Motor Test in Huntsville, Alabama NASA Invites Media to Final Orion Jettison Motor Test in Huntsville, Alabama',
     link:
       'http://www.nasa.gov/press-release/nasa-invites-media-to-final-orion-jettison-motor-test-in-huntsville-alabama',
     description:
@@ -30,6 +33,7 @@ const mockPosts = [
       'http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/f67i5542.jpg?itok=xhOqJZcw',
   },
   {
+    id: 4,
     title: 'NASA Administrator to Visit SpaceX Headquarters',
     link:
       'http://www.nasa.gov/press-release/nasa-administrator-to-visit-spacex-headquarters',

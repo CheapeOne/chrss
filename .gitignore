@@ -2,14 +2,16 @@
 .DS_Store
 
 # compiled output
-/dist
+dist
 node_modules
 
 # IDE - VSCode
-.vscode/*
+.vscode
 
 .env
 
 *.db
 
 yarn-error.log
+
+.linaria-cache
