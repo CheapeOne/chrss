@@ -15,3 +15,6 @@ node_modules
 yarn-error.log
 
 .linaria-cache
+
+# Docker
+docker-compose-override.yml
