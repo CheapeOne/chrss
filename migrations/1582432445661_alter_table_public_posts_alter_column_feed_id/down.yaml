@@ -1,0 +1,10 @@
+- args:
+    cascade: false
+    read_only: false
+    sql: ALTER TABLE "public"."posts" ALTER COLUMN "feed_id" TYPE integer;
+  type: run_sql
+- args:
+    cascade: false
+    read_only: false
+    sql: ALTER TABLE "public"."posts" ALTER COLUMN "feed_id" DROP NOT NULL;
+  type: run_sql

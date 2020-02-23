@@ -1,0 +1,5 @@
+- args:
+    cascade: false
+    read_only: false
+    sql: ALTER TABLE "public"."feeds" ALTER COLUMN "self_url" DROP NOT NULL;
+  type: run_sql
