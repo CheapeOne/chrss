@@ -47,12 +47,15 @@ var feedUrls = []string{
 
 func main() {
 
-	for _, feedUrl := range feedUrls {
-		feed := fetchFeed(feedUrl)
+	// for _, feedUrl := range feedUrls {
+	// 	feed := fetchFeed(feedUrl)
 
-	}
+	// }
 
-	db, err := database.Connect()
+	db, _ := database.Connect()
+	res, _ := db.Query("SHOW TABLES")
+	fmt.Println(res)
+
 }
 
 func fetchFeed(feedUrl string) *Feed {

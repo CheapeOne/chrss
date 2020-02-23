@@ -2,6 +2,9 @@ version: "3.6"
 services:
   postgres:
     image: postgres:12
+    ports:
+      # TODO: dont do
+      - "5432:5432"
     restart: always
     volumes:
       - db_data:/var/lib/postgresql/data
