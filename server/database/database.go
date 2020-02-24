@@ -22,10 +22,11 @@ func Connect() (*sqlx.DB, error) {
 		return db, nil
 	}
 
-	db, err := sqlx.Connect("pgx", "postgres://postgres:postgrespassword@localhost:5432/postgres")
+	newConnection, err := sqlx.Connect("pgx", "postgres://postgres:postgrespassword@localhost:5432/postgres")
 	if err != nil {
 		panic(err)
 	}
 
+	db = newConnection
 	return db, nil
 }

@@ -3,9 +3,10 @@ package main
 import (
 	"encoding/xml"
 	"fmt"
-	"github.com/CheapeOne/chrss/server/database"
 	"log"
 	"net/http"
+
+	"github.com/CheapeOne/chrss/server/database"
 )
 
 // Enclosure :
@@ -17,20 +18,21 @@ type Enclosure struct {
 
 // Post :
 type Post struct {
-	Title     string    `xml:"title"`
-	Link      string    `xml:"link"`
-	Desc      string    `xml:"description"`
-	GUID      string    `xml:"guid"`
-	Enclosure Enclosure `xml:"enclosure"`
-	PubDate   string    `xml:"pubDate"`
+	Title       string    `xml:"title"`
+	Url         string    `xml:"link"`
+	Description string    `xml:"description"`
+	GUID        string    `xml:"guid"`
+	Enclosure   Enclosure `xml:"enclosure"`
+	PubDate     string    `xml:"pubDate"`
 }
 
 // Feed :
 type Feed struct {
-	Title       string `xml:"title"`
-	Link        string `xml:"link"`
-	Description string `xml:"description"`
-	Posts       []Post `xml:"item"`
+	Id          int
+	Title       string  `xml:"title"`
+	RssUrl      string  `xml:"link"`
+	Description *string `xml:"description"`
+	Posts       []Post  `xml:"item"`
 }
 
 // Rss :
@@ -38,28 +40,46 @@ type Rss struct {
 	Feed Feed `xml:"channel"`
 }
 
-var feedUrls = []string{
-	"https://news.vuejs.org/feed.xml",
-	"http://feeds.feedburner.com/PoorlyDrawnLines?format=xml",
-	"https://xkcd.com/atom.xml",
-	"https://webcomicname.com/rss",
-}
-
 func main() {
+	allFeeds := selectDBFeeds()
 
-	// for _, feedUrl := range feedUrls {
-	// 	feed := fetchFeed(feedUrl)
+	fmt.Printf("Found %d feeds in DB \n\n", len(allFeeds))
 
-	// }
+	for _, feed := range allFeeds {
 
-	db, _ := database.Connect()
-	res, _ := db.Query("SHOW TABLES")
-	fmt.Println(res)
+		fmt.Printf("Fetching xml for feed %s ... \n", feed.RssUrl)
+		feedXML := fetchFeedXML(feed.RssUrl)
+		posts := feedXML.Posts
 
+		fmt.Println("Processing posts ...")
+
+		numAdded := 0
+		for _, post := range posts {
+			successful := tryInsertPost(feed, post)
+			if successful {
+				numAdded++
+			}
+		}
+
+		numSkipped := len(posts) - numAdded
+		fmt.Printf("Added %d posts, Skipped %d \n\n", numAdded, numSkipped)
+	}
 }
 
-func fetchFeed(feedUrl string) *Feed {
-	resp, err := http.Get("https://news.vuejs.org/feed.xml")
+func selectDBFeeds() []Feed {
+	db, _ := database.Connect()
+
+	ff := []Feed{}
+	err := db.Select(&ff, "SELECT id, title, rss_url AS rssurl, description FROM feeds")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	return ff
+}
+
+func fetchFeedXML(feedUrl string) *Feed {
+	resp, err := http.Get(feedUrl)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -67,7 +87,6 @@ func fetchFeed(feedUrl string) *Feed {
 	defer resp.Body.Close()
 
 	rss := Rss{}
-
 	decoder := xml.NewDecoder(resp.Body)
 	err = decoder.Decode(&rss)
 	if err != nil {
@@ -75,12 +94,25 @@ func fetchFeed(feedUrl string) *Feed {
 		return nil
 	}
 
-	fmt.Printf("Channel title: %v\n", rss.Feed.Title)
-	fmt.Printf("Channel link: %v\n", rss.Feed.Link)
-
 	return &rss.Feed
 }
 
-func storePost() {
+func tryInsertPost(feed Feed, post Post) bool {
+	db, _ := database.Connect()
+	query := `INSERT INTO posts (title, description, url, guid, feed_id) VALUES ($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING`
 
+	result, err := db.Exec(
+		query,
+		post.Title,
+		post.Description,
+		post.Url,
+		post.GUID,
+		feed.Id,
+	)
+	if err != nil {
+		panic(err)
+	}
+
+	rows, _ := result.RowsAffected()
+	return rows == 1
 }
