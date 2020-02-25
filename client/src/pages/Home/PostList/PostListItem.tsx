@@ -15,6 +15,7 @@ const PostListItem: React.FC<Props> = ({ post }) => {
       <LazyImage src={post.image} className={imageClass} />
       <div className={detailsClass}>
         <div className="title is-size-6">{clippedTitle}</div>
+        {post.description && <p>{post.description}</p>}
       </div>
     </div>
   );

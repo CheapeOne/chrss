@@ -13,7 +13,7 @@ import mockTags from '#/mocks/tags';
 
 const POSTS = gql`
   {
-    posts(order_by: { created_at: desc }, limit: 10) {
+    posts(order_by: { created_at: asc }, limit: 10) {
       id
       title
       url
