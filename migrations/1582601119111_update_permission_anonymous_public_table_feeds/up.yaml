@@ -1,0 +1,19 @@
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - title
+      - description
+      - rss_url
+      - self_url
+      computed_fields: []
+      filter: {}
+      limit: 1000
+    role: anonymous
+    table:
+      name: feeds
+      schema: public
+  type: create_select_permission

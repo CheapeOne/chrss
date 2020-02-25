@@ -72,6 +72,7 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist',
+    port: 7000,
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.css', 'scss'],

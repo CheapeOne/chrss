@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
+import { render } from 'react-dom';
+import { ApolloProvider } from '@apollo/react-hooks';
 import Router from './Router';
 import '#/styles/theme.global.scss';
+import client from './gql';
 
 const App: React.FC = () => {
-  return <Router />;
+  return (
+    <ApolloProvider client={client}>
+      <Router />
+    </ApolloProvider>
+  );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById('root'));

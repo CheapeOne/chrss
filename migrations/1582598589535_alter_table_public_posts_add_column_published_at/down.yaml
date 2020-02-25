@@ -1,0 +1,5 @@
+- args:
+    cascade: false
+    read_only: false
+    sql: ALTER TABLE "public"."posts" DROP COLUMN "published_at";
+  type: run_sql

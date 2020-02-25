@@ -1,0 +1,20 @@
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - description
+      - feed_id
+      - guid
+      - id
+      - image
+      - published_at
+      - title
+      - url
+      computed_fields: []
+      filter: {}
+      limit: 1000
+    role: anonymous
+    table:
+      name: posts
+      schema: public
+  type: create_select_permission
