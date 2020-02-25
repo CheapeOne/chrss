@@ -6,6 +6,7 @@ export interface Post {
   image?: string;
   link: string;
   title: string;
+  published_at?: string;
 }
 
 export interface Tag {
