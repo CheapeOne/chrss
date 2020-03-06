@@ -26,6 +26,7 @@ const TagItem: React.FC<Props> = ({ tag, onClick, isActive }) => {
 };
 
 const wrapperClass = css`
+  font-family: 'iosevka';
   white-space: nowrap;
   text-overflow: ellipsis;
   cursor: pointer;

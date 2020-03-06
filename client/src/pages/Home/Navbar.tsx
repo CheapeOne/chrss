@@ -18,6 +18,9 @@ const navClass = css`
 
 const headerClass = css`
   color: white;
+  font-family: 'iosevka';
+  font-style: italic;
+  font-weight: bold;
 `;
 
 export default Navbar;

@@ -26,8 +26,10 @@ const POSTS = gql`
 `;
 
 const Home: React.FC = () => {
-  const { loading, error, data } = useQuery(POSTS);
-
+  // const { loading, error, data } = useQuery(POSTS);
+  const loading = false;
+  const error = false;
+  const data = { posts: [] };
   if (loading) return <div>LOADING</div>;
   if (error) return <div>ERROR</div>;
 
