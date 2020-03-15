@@ -5,25 +5,8 @@ import { ActiveTagProvider } from '#/contexts/ActiveTagContext';
 import Sidebar from './Sidebar';
 import { css } from 'linaria';
 
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
-
 import mockPosts from '#/mocks/posts';
 import mockTags from '#/mocks/tags';
-
-const POSTS = gql`
-  {
-    posts(order_by: { created_at: asc }, limit: 10) {
-      id
-      title
-      url
-      description
-      feed_id
-      image
-      published_at
-    }
-  }
-`;
 
 const Home: React.FC = () => {
   // const { loading, error, data } = useQuery(POSTS);

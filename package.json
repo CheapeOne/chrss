@@ -9,6 +9,8 @@
     "start": "webpack-dev-server --mode development --config client/webpack.config.js"
   },
   "dependencies": {
+    "@apollo/react-components": "^3.1.3",
+    "@apollo/react-hoc": "^3.1.3",
     "@apollo/react-hooks": "^3.1.3",
     "apollo-boost": "^0.4.7",
     "bulma": "^0.8.0",
@@ -29,6 +31,11 @@
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@babel/register": "^7.8.3",
+    "@graphql-codegen/cli": "^1.13.0",
+    "@graphql-codegen/introspection": "^1.13.0",
+    "@graphql-codegen/typescript": "^1.13.0",
+    "@graphql-codegen/typescript-operations": "^1.13.0",
+    "@graphql-codegen/typescript-react-apollo": "^1.13.0",
     "@types/classnames": "^2.2.9",
     "@types/jest": "24.0.16",
     "@types/node": "12.6.9",
