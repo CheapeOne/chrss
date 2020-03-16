@@ -1,10 +1,13 @@
 import React from 'react';
 import { css } from 'linaria';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
     <div className={navClass}>
-      <h1 className={`title ${headerClass}`}>/ chrss /</h1>
+      <Link to="/">
+        <h1 className={`title ${headerClass}`}>/ chrss /</h1>
+      </Link>
     </div>
   );
 };

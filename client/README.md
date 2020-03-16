@@ -9,3 +9,4 @@ Dependencies:
 - Lodash
 - Linaria
 - Classnames
+- Graphql Codegen: https://github.com/dotansimha/graphql-code-generator

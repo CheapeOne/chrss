@@ -3,21 +3,35 @@ import ActiveTagContext from '#/contexts/ActiveTagContext';
 import { Tag } from '#/types/api.types';
 import { css } from 'linaria';
 import TagItem from './TagItem';
+import { Link, useLocation } from 'react-router-dom';
+import cn from 'classnames';
 
 interface Props {
   tags: Array<Tag>;
 }
 
-const Sidebar: React.FC<Props> = ({ tags }) => {
+const Sidebar: React.FC<Props> = props => {
   const { activeTag, setActiveTag } = useContext(ActiveTagContext);
 
   const onItemClick = (tag: Tag) => {
     setActiveTag(tag);
   };
 
+  const location = useLocation();
+  const isActive = location.pathname === '/all-feeds';
+
   return (
     <div className={wrapperClass}>
-      {tags.map(tag => {
+      <Link to="/all-feeds">
+        <div
+          className={cn('button', 'is-primary', {
+            'is-light': !isActive,
+          })}
+        >
+          All Feeds
+        </div>
+      </Link>
+      {props.tags.map(tag => {
         const isActive = tag.id === activeTag?.id;
 
         return (
@@ -35,7 +49,6 @@ const Sidebar: React.FC<Props> = ({ tags }) => {
 
 const wrapperClass = css`
   width: 8rem;
-  margin-top: 1rem;
 `;
 
 export default Sidebar;

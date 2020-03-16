@@ -1,21 +1,16 @@
 import React from 'react';
 import Navbar from './Navbar';
-import PostList from '#/pages/Home/PostList';
 import { ActiveTagProvider } from '#/contexts/ActiveTagContext';
 import Sidebar from './Sidebar';
 import { css } from 'linaria';
+import * as panes from './panes';
 
-import mockPosts from '#/mocks/posts';
+import { Switch, Route, RouteComponentProps } from 'react-router-dom';
 import mockTags from '#/mocks/tags';
 
-const Home: React.FC = () => {
-  // const { loading, error, data } = useQuery(POSTS);
-  const loading = false;
-  const error = false;
-  const data = { posts: [] };
-  if (loading) return <div>LOADING</div>;
-  if (error) return <div>ERROR</div>;
+interface Props extends RouteComponentProps {}
 
+const Main: React.FC<Props> = props => {
   return (
     <ActiveTagProvider>
       <Navbar />
@@ -23,8 +18,11 @@ const Home: React.FC = () => {
         <div className="is-hidden-mobile">
           <Sidebar tags={mockTags} />
         </div>
-        <div className={listWrapper}>
-          <PostList posts={data.posts} />
+        <div className={paneWrapper}>
+          <Switch>
+            <Route path="/all-feeds" component={panes.FeedsManager} />
+            <Route path="/" component={panes.PostsPane} />
+          </Switch>
         </div>
       </div>
     </ActiveTagProvider>
@@ -34,11 +32,12 @@ const Home: React.FC = () => {
 const contentClass = css`
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 `;
 
-const listWrapper = css`
+const paneWrapper = css`
   width: 100%;
   max-width: 45rem;
 `;
 
-export default Home;
+export default Main;

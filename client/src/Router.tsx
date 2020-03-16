@@ -1,13 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import * as routes from './pages';
 
 const Router: React.FC = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Switch>
-      <Route path="/" component={routes.Home} />
+      <Route path="/" component={routes.Main} />
     </Switch>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 export default Router;
