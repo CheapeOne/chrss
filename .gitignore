@@ -21,3 +21,5 @@ docker-compose-override.yml
 
 # Hasura
 config.yaml
+
+pgdata

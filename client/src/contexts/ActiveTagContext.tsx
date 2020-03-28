@@ -1,4 +1,4 @@
-import React, { createContext, useState, useMemo } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 import { Tag } from '#/types/api.types';
 
 interface ActiveTagContext {
@@ -28,4 +28,4 @@ export const ActiveTagProvider: React.FC = props => {
   );
 };
 
-export default ActiveTagContext;
+export const useActiveTag = () => useContext(ActiveTagContext);
