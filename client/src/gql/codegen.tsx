@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import * as React from 'react';
 import * as ApolloReactCommon from '@apollo/react-common';
 import * as ApolloReactComponents from '@apollo/react-components';
-import * as ApolloReactHoc from '@apollo/react-hoc';
+import * as ApolloReactHooks from '@apollo/react-hooks';
 export type Maybe<T> = T | null;
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
@@ -242,6 +242,17 @@ export type Timestamptz_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['timestamptz']>>;
 };
 
+export type FeedsQueryVariables = {};
+
+
+export type FeedsQuery = (
+  { __typename?: 'query_root' }
+  & { feeds: Array<(
+    { __typename?: 'feeds' }
+    & Pick<Feeds, 'id' | 'self_url' | 'rss_url' | 'title' | 'created_at' | 'description'>
+  )> }
+);
+
 export type PostsQueryVariables = {};
 
 
@@ -254,6 +265,49 @@ export type PostsQuery = (
 );
 
 
+export const FeedsDocument = gql`
+    query Feeds {
+  feeds {
+    id
+    self_url
+    rss_url
+    title
+    created_at
+    description
+  }
+}
+    `;
+export type FeedsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<FeedsQuery, FeedsQueryVariables>, 'query'>;
+
+    export const FeedsComponent = (props: FeedsComponentProps) => (
+      <ApolloReactComponents.Query<FeedsQuery, FeedsQueryVariables> query={FeedsDocument} {...props} />
+    );
+    
+
+/**
+ * __useFeedsQuery__
+ *
+ * To run a query within a React component, call `useFeedsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFeedsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFeedsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useFeedsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FeedsQuery, FeedsQueryVariables>) {
+        return ApolloReactHooks.useQuery<FeedsQuery, FeedsQueryVariables>(FeedsDocument, baseOptions);
+      }
+export function useFeedsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FeedsQuery, FeedsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FeedsQuery, FeedsQueryVariables>(FeedsDocument, baseOptions);
+        }
+export type FeedsQueryHookResult = ReturnType<typeof useFeedsQuery>;
+export type FeedsLazyQueryHookResult = ReturnType<typeof useFeedsLazyQuery>;
+export type FeedsQueryResult = ApolloReactCommon.QueryResult<FeedsQuery, FeedsQueryVariables>;
 export const PostsDocument = gql`
     query Posts {
   posts(order_by: {created_at: asc}, limit: 10) {
@@ -273,15 +327,28 @@ export type PostsComponentProps = Omit<ApolloReactComponents.QueryComponentOptio
       <ApolloReactComponents.Query<PostsQuery, PostsQueryVariables> query={PostsDocument} {...props} />
     );
     
-export type PostsProps<TChildProps = {}> = ApolloReactHoc.DataProps<PostsQuery, PostsQueryVariables> & TChildProps;
-export function withPosts<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  PostsQuery,
-  PostsQueryVariables,
-  PostsProps<TChildProps>>) {
-    return ApolloReactHoc.withQuery<TProps, PostsQuery, PostsQueryVariables, PostsProps<TChildProps>>(PostsDocument, {
-      alias: 'posts',
-      ...operationOptions
-    });
-};
+
+/**
+ * __usePostsQuery__
+ *
+ * To run a query within a React component, call `usePostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePostsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
+        return ApolloReactHooks.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions);
+      }
+export function usePostsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions);
+        }
+export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
+export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
 export type PostsQueryResult = ApolloReactCommon.QueryResult<PostsQuery, PostsQueryVariables>;

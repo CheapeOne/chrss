@@ -16,7 +16,8 @@ const navClass = css`
   width: 100%;
   padding: 2rem;
   background: var(--primary);
-  text-align: center;
+  display: flex;
+  justify-content: center;
 `;
 
 const headerClass = css`

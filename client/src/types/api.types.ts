@@ -1,17 +1,6 @@
-export interface Post {
-  id?: number;
-  author?: string;
-  categories?: Array<string>;
-  description?: string;
-  image?: string;
-  link: string;
-  title: string;
-  published_at?: string;
-}
+// codegen uses plural types which are dumb
 
-export interface Tag {
-  id: number;
-  name: string;
-  parent_id?: number;
-  children?: Array<Tag>;
-}
+import { Posts, Feeds } from '#/gql/codegen';
+
+export interface Post extends Posts {}
+export interface Feed extends Feeds {}

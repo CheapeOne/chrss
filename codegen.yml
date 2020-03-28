@@ -2,6 +2,10 @@ schema: http://localhost:8080/v1/graphql
 documents: ./client/src/**/*.gql
 generates:
   client/src/gql/codegen.tsx:
-    - typescript
-    - typescript-operations
-    - typescript-react-apollo
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true
+      withHOC: false
