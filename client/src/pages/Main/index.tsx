@@ -10,7 +10,7 @@ import mockTags from '#/mocks/tags';
 
 interface Props extends RouteComponentProps {}
 
-const Main: React.FC<Props> = props => {
+const Main: React.FC<Props> = (props) => {
   return (
     <ActiveTagProvider>
       <Navbar />
