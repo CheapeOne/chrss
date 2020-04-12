@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+// Brand colors
+$cc-red: #f3797c;
+$cc-dark: #363636;
+$cc-blue: #99dadc;
+$cc-light: #fffae1;
+
+// My global variables
+:root {
+  --primary: #{$cc-red};
+  --secondary: #{$cc-blue};
+  --background: #{$cc-light};
+}
+
+// Update Bulma's global variables
+$primary: $cc-red;
+$background: $cc-light;
+$text: $cc-dark;
+
+// Import what we need from bulma
+
+@import '../../../node_modules/bulma/sass/utilities/_all.sass';
+@import '../../../node_modules/bulma/sass/base/_all.sass';
+
+@import '../../../node_modules/bulma/sass/grid/columns.sass';
+
+@import '../../../node_modules/bulma/sass/elements/button.sass';
+@import '../../../node_modules/bulma/sass/elements/title.sass';
+@import '../../../node_modules/bulma/sass/elements/title.sass';
