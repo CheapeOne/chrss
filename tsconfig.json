@@ -1,0 +1,3 @@
+{
+    "extends": "./client-vue/tsconfig.json"
+}

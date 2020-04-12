@@ -21,7 +21,7 @@ const Sidebar: React.FC<Props> = props => {
   const isActive = location.pathname === '/all-feeds';
 
   return (
-    <div className={wrapperClass}>
+    <div className={Wrapper}>
       <Link to="/all-feeds">
         <div
           className={cn('button', 'is-primary', {
@@ -47,7 +47,7 @@ const Sidebar: React.FC<Props> = props => {
   );
 };
 
-const wrapperClass = css`
+const Wrapper = css`
   width: 8rem;
 `;
 
