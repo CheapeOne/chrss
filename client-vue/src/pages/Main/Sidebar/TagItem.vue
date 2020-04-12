@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="{ active: isActive }" @click="onClick(tag)">
+  <div class="wrapper" :class="{ selected: selected }" @click="onClick(tag)">
     <span class="active-icon">#</span>
     {{ tag.name }}
   </div>
@@ -9,7 +9,7 @@
 import Vue from 'vue';
 export default Vue.extend({
   props: {
-    isActive: Boolean,
+    selected: Boolean,
     onClick: Function,
     tag: Object,
   },
@@ -28,7 +28,7 @@ export default Vue.extend({
     color: var(--primary);
   }
 
-  &.active {
+  &.selected {
     color: var(--primary);
     font-style: italic;
 

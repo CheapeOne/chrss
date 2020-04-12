@@ -1,13 +1,9 @@
 <template>
   <div>
-    <Navbar />
+    <navbar />
     <div class="content">
-      <div class="is-hidden-mobile">
-        <Sidebar :tags="tags" />
-      </div>
-      <div class="pane-wrapper">
-        <PostsPane />
-      </div>
+      <sidebar :tags="tags" class="sidebar is-hidden-mobile" />
+      <posts-pane class="posts-pane" />
     </div>
   </div>
 </template>
@@ -16,11 +12,12 @@
 import Vue from 'vue';
 import tags from '@/mocks/tags';
 import Navbar from './Navbar.vue';
+import PostsPane from './panes/PostsPane/index.vue';
 import Sidebar from './Sidebar/index.vue';
 
 export default Vue.extend({
   name: 'Main',
-  components: { Navbar, Sidebar },
+  components: { Navbar, Sidebar, PostsPane },
   data() {
     return {
       tags: tags,
@@ -33,11 +30,16 @@ export default Vue.extend({
 .content {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
 }
 
-.pane-wrapper {
-  width: 100%;
-  max-width: 45rem;
+.sidebar {
+  width: 200px;
+}
+
+.posts-pane {
+  flex-grow: 1;
 }
 </style>

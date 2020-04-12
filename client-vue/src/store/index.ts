@@ -1,7 +1,7 @@
 import { createDirectStore } from 'direct-vuex';
 import Vue from 'vue';
 import Vuex from 'vuex';
-import tags from './modules/tags';
+import feeds from './modules/feeds';
 import user from './modules/user';
 
 Vue.use(Vuex);
@@ -15,7 +15,7 @@ const {
   rootGetterContext,
   moduleGetterContext,
 } = createDirectStore({
-  modules: { tags, user },
+  modules: { feeds, user },
 });
 
 export default store;

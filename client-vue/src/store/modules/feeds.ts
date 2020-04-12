@@ -2,16 +2,20 @@ import { createModule } from 'direct-vuex';
 import { Tag } from '@/types/api';
 
 interface State {
-  active: Tag | null;
+  selectedTag: Tag | null;
 }
 
 const state: State = {
-  active: null,
+  selectedTag: null,
 };
 
 const mutations = {
-  setActiveTag(state: State, activeTag: Tag) {
-    state.active = activeTag;
+  selectTag(state: State, selectedTag: Tag) {
+    state.selectedTag = selectedTag;
+  },
+
+  selectAll(state: State) {
+    state.selectedTag = null;
   },
 };
 
