@@ -1,0 +1,23 @@
+{
+  "name": "chrss",
+  "version": "1.0.0",
+  "description": "Chris RSS Reader",
+  "main": "index.js",
+  "scripts": {
+    "start": "yarn workspace client-vue start",
+    "cadd": "yarn workspace client-vue add"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CheapeOne/chrss.git"
+  },
+  "author": "Chris Cheape",
+  "bugs": {
+    "url": "https://github.com/CheapeOne/chrss/issues"
+  },
+  "homepage": "https://github.com/CheapeOne/chrss#readme",
+  "private": true,
+  "workspaces": [
+    "client-vue"
+  ]
+}

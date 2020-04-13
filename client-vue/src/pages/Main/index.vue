@@ -27,15 +27,13 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .content {
-  display: flex;
-  justify-content: center;
+  display: grid;
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 4rem 1rem;
-}
-
-.sidebar {
-  width: 200px;
+  margin: 4rem auto;
+  justify-content: space-between;
+  grid-template-columns: 200px 1fr;
+  grid-column-gap: 2rem;
+  padding: 0 1rem;
 }
 
 .posts-pane {

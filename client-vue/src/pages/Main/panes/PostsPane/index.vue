@@ -1,9 +1,27 @@
 <template>
-  <div>Posts Pane</div>
+  <div>
+    <post-item v-for="post in posts" :key="post.id" />
+  </div>
 </template>
 
 <script lang="ts">
-export default {};
-</script>
+import Vue from 'vue';
+import PostItem from './PostItem.vue';
+import Posts from './posts.gql';
 
-<style></style>
+export default Vue.extend({
+  components: { PostItem },
+
+  data() {
+    return {
+      posts: [1, 2, 3],
+    };
+  },
+
+  apollo: {
+    posts: {
+      query: Posts,
+    },
+  },
+});
+</script>
