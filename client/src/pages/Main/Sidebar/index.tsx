@@ -1,10 +1,10 @@
+import cn from 'classnames';
+import { css } from 'linaria';
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useActiveTag } from '#/contexts/ActiveTagContext';
 import { Tag, useTagsQuery } from '#/gql/codegen';
-import { css } from 'linaria';
 import TagItem from './TagItem';
-import { Link, useLocation } from 'react-router-dom';
-import cn from 'classnames';
 
 interface Props { }
 

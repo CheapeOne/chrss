@@ -1,8 +1,6 @@
 import React from 'react';
 
-interface Props {}
-
-const PostsPane: React.FC<Props> = props => {
+const PostsPane: React.FC<{}> = props => {
   return <div></div>;
 };
 

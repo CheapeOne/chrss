@@ -1,7 +1,7 @@
-import React from 'react';
-import { Tag } from '#/types/api.types';
 import { css } from 'linaria';
 import cn from 'classnames';
+import React from 'react';
+import { Tag } from '#/gql/codegen';
 
 interface Props {
   isActive: boolean;
