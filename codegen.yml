@@ -1,11 +1,6 @@
 schema: http://localhost:8080/v1/graphql
-documents: ./client/src/**/*.gql
+documents: ./client-vue/src/**/*.gql
 generates:
-  client/src/gql/codegen.tsx:
+  client-vue/src/gql/codegen.ts:
     plugins:
       - typescript
-      - typescript-operations
-      - typescript-react-apollo
-    config:
-      withHooks: true
-      withHOC: false

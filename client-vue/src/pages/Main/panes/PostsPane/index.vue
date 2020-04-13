@@ -12,12 +12,6 @@ import Posts from './posts.gql';
 export default Vue.extend({
   components: { PostItem },
 
-  data() {
-    return {
-      posts: [1, 2, 3],
-    };
-  },
-
   apollo: {
     posts: {
       query: Posts,
