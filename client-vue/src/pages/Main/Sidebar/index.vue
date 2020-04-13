@@ -7,7 +7,7 @@
     >
       All Feeds
     </div>
-    <TagItem
+    <tag-item
       v-for="tag in tags"
       :key="tag.id"
       :tag="tag"
@@ -24,7 +24,6 @@ import { Tag } from '@/types/api';
 import TagItem from './TagItem.vue';
 
 export default Vue.extend({
-  name: 'sidebar',
   components: { TagItem },
 
   props: {

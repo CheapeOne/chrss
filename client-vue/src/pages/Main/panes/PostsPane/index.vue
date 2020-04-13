@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-export default { name: 'posts-pane' };
+export default {};
 </script>
 
 <style></style>

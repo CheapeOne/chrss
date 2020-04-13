@@ -7,7 +7,7 @@
 </template>
 
 <script>
-export default { name: 'navbar' };
+export default {};
 </script>
 
 <style lang="scss" scoped>

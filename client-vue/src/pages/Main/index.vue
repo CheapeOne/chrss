@@ -16,7 +16,6 @@ import PostsPane from './panes/PostsPane/index.vue';
 import Sidebar from './Sidebar/index.vue';
 
 export default Vue.extend({
-  name: 'Main',
   components: { Navbar, Sidebar, PostsPane },
   data() {
     return {
