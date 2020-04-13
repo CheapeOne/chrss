@@ -4,7 +4,7 @@ Chris RSS Reader
 
 There are 4 parts of the application:
 
-1. React frontend application (`/client` folder)
+1. Vue frontend application (`/client` folder)
 2. Postgres database (docker image)
 3. Hasura Graphql engine
    - Hasura autogenerates a Graphql api from the Postgres DB, using Hasura docker image: https://hasura.io/.

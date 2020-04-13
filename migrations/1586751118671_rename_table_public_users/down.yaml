@@ -1,5 +1,5 @@
 - args:
     cascade: false
     read_only: false
-    sql: ALTER TABLE "public"."feeds" DROP COLUMN "title";
+    sql: alter table "public"."user" rename to "users";
   type: run_sql

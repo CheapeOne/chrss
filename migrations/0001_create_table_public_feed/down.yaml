@@ -1,5 +1,5 @@
 - args:
     cascade: false
     read_only: false
-    sql: ALTER TABLE "public"."feeds" DROP COLUMN "rss_url";
+    sql: DROP TABLE "public"."feed";
   type: run_sql
