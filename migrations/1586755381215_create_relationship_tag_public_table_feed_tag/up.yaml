@@ -1,0 +1,13 @@
+- args:
+    name: tag
+    table:
+      name: feed_tag
+      schema: public
+    using:
+      manual_configuration:
+        column_mapping:
+          tag_id: id
+        remote_table:
+          name: tag
+          schema: public
+  type: create_object_relationship
