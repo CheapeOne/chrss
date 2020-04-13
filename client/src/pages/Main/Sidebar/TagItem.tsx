@@ -16,16 +16,16 @@ const TagItem: React.FC<Props> = ({ tag, onClick, isActive }) => {
 
   return (
     <div
-      className={cn({ [wrapperClass]: true, [activeClass]: isActive })}
+      className={cn(Wrapper, { [Active]: isActive })}
       onClick={handleClick}
     >
-      <span className={activeIconClass}>#</span>
+      <span className={ActiveIcon}>#</span>
       {tag.name}
     </div>
   );
 };
 
-const wrapperClass = css`
+const Wrapper = css`
   font-family: 'iosevka';
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -37,15 +37,15 @@ const wrapperClass = css`
   }
 `;
 
-const activeIconClass = css`
+const ActiveIcon = css`
   opacity: 0;
 `;
 
-const activeClass = css`
+const Active = css`
   color: var(--primary);
   font-style: italic;
 
-  .${activeIconClass} {
+  .${ActiveIcon} {
     opacity: 1;
   }
 `;

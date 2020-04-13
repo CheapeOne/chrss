@@ -6,19 +6,18 @@ import { css } from 'linaria';
 import * as panes from './panes';
 
 import { Switch, Route, RouteComponentProps } from 'react-router-dom';
-import mockTags from '#/mocks/tags';
 
-interface Props extends RouteComponentProps {}
+interface Props extends RouteComponentProps { }
 
 const Main: React.FC<Props> = (props) => {
   return (
     <ActiveTagProvider>
       <Navbar />
-      <div className={contentClass}>
+      <div className={Content}>
         <div className="is-hidden-mobile">
-          <Sidebar tags={mockTags} />
+          <Sidebar />
         </div>
-        <div className={paneWrapper}>
+        <div className={Pane}>
           <Switch>
             <Route path="/all-feeds" component={panes.FeedsManager} />
             <Route path="/" component={panes.PostsPane} />
@@ -29,13 +28,13 @@ const Main: React.FC<Props> = (props) => {
   );
 };
 
-const contentClass = css`
+const Content = css`
   display: flex;
   justify-content: center;
   margin-top: 2rem;
 `;
 
-const paneWrapper = css`
+const Pane = css`
   width: 100%;
   max-width: 45rem;
 `;

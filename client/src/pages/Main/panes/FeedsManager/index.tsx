@@ -3,7 +3,7 @@ import { css } from 'linaria';
 import { useFeedsQuery } from '#/gql/codegen';
 import FeedBlock from './FeedBlock';
 
-interface Props {}
+interface Props { }
 
 const FeedsManager = (props: Props) => {
   const { data, loading, error } = useFeedsQuery();

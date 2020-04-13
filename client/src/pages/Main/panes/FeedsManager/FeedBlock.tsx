@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feed } from '#/types/api.types';
+import { Feed } from '#/gql/codegen';
 
 interface Props {
   feed: Feed;

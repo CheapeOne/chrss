@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
-    <div className={navClass}>
+    <div className={Nav}>
       <Link to="/">
-        <h1 className={`title ${headerClass}`}>/ chrss /</h1>
+        <h1 className={`title ${Header}`}>/ chrss /</h1>
       </Link>
     </div>
   );
 };
 
-const navClass = css`
+const Nav = css`
   width: 100%;
   padding: 2rem;
   background: var(--primary);
@@ -20,7 +20,7 @@ const navClass = css`
   justify-content: center;
 `;
 
-const headerClass = css`
+const Header = css`
   color: white;
   font-family: 'iosevka';
   font-style: italic;

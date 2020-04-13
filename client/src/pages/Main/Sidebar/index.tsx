@@ -1,17 +1,16 @@
-import React, { useContext } from 'react';
-import ActiveTagContext from '#/contexts/ActiveTagContext';
-import { Tag } from '#/types/api.types';
+import React from 'react';
+import { useActiveTag } from '#/contexts/ActiveTagContext';
+import { Tag, useTagsQuery } from '#/gql/codegen';
 import { css } from 'linaria';
 import TagItem from './TagItem';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 
-interface Props {
-  tags: Array<Tag>;
-}
+interface Props { }
 
 const Sidebar: React.FC<Props> = props => {
-  const { activeTag, setActiveTag } = useContext(ActiveTagContext);
+  const { data, loading, error } = useTagsQuery();
+  const { activeTag, setActiveTag } = useActiveTag();
 
   const onItemClick = (tag: Tag) => {
     setActiveTag(tag);
@@ -20,34 +19,34 @@ const Sidebar: React.FC<Props> = props => {
   const location = useLocation();
   const isActive = location.pathname === '/all-feeds';
 
+  const buttonClass = cn('button', 'is-primary', {
+    'is-light': !isActive,
+  });
+
+  if (!data || loading || error) {
+    return null;
+  }
+
   return (
-    <div className={wrapperClass}>
+    <div className={Wrapper}>
       <Link to="/all-feeds">
-        <div
-          className={cn('button', 'is-primary', {
-            'is-light': !isActive,
-          })}
-        >
+        <div className={buttonClass}>
           All Feeds
         </div>
       </Link>
-      {props.tags.map(tag => {
-        const isActive = tag.id === activeTag?.id;
-
-        return (
-          <TagItem
-            tag={tag}
-            onClick={onItemClick}
-            isActive={isActive}
-            key={tag.id}
-          />
-        );
-      })}
+      {data.tags.map(tag => (
+        <TagItem
+          tag={tag}
+          onClick={onItemClick}
+          isActive={tag.id === activeTag?.id}
+          key={tag.id}
+        />
+      ))}
     </div>
   );
 };
 
-const wrapperClass = css`
+const Wrapper = css`
   width: 8rem;
 `;
 

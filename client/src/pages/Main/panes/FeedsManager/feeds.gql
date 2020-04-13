@@ -1,5 +1,5 @@
 query Feeds {
-  feeds {
+  feeds: feed {
     id
     self_url
     rss_url

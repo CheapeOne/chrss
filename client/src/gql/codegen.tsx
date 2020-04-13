@@ -15,23 +15,34 @@ export type Scalars = {
   timestamptz: any;
 };
 
-export type Feeds = {
-   __typename?: 'feeds';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
+export type Feed = {
+   __typename?: 'feed';
+  created_at: Scalars['timestamptz'];
+  description: Scalars['String'];
+  feed_tags: Array<Feed_Tag>;
   id: Scalars['Int'];
   rss_url: Scalars['String'];
   self_url: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  title: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
 };
 
-export type Feeds_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Feeds_Bool_Exp>>>;
-  _not?: Maybe<Feeds_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Feeds_Bool_Exp>>>;
+
+export type FeedFeed_TagsArgs = {
+  distinct_on?: Maybe<Array<Feed_Tag_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Feed_Tag_Order_By>>;
+  where?: Maybe<Feed_Tag_Bool_Exp>;
+};
+
+export type Feed_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Feed_Bool_Exp>>>;
+  _not?: Maybe<Feed_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Feed_Bool_Exp>>>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   description?: Maybe<String_Comparison_Exp>;
+  feed_tags?: Maybe<Feed_Tag_Bool_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
   rss_url?: Maybe<String_Comparison_Exp>;
   self_url?: Maybe<String_Comparison_Exp>;
@@ -39,7 +50,7 @@ export type Feeds_Bool_Exp = {
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
 
-export type Feeds_Order_By = {
+export type Feed_Order_By = {
   created_at?: Maybe<Order_By>;
   description?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -49,13 +60,51 @@ export type Feeds_Order_By = {
   updated_at?: Maybe<Order_By>;
 };
 
-export enum Feeds_Select_Column {
+export enum Feed_Select_Column {
   CreatedAt = 'created_at',
   Description = 'description',
   Id = 'id',
   RssUrl = 'rss_url',
   SelfUrl = 'self_url',
   Title = 'title',
+  UpdatedAt = 'updated_at'
+}
+
+export type Feed_Tag = {
+   __typename?: 'feed_tag';
+  created_at: Scalars['timestamptz'];
+  feed?: Maybe<Feed>;
+  feed_id: Scalars['Int'];
+  tag?: Maybe<Tag>;
+  tag_id: Scalars['Int'];
+  updated_at: Scalars['timestamptz'];
+};
+
+export type Feed_Tag_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Feed_Tag_Bool_Exp>>>;
+  _not?: Maybe<Feed_Tag_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Feed_Tag_Bool_Exp>>>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  feed?: Maybe<Feed_Bool_Exp>;
+  feed_id?: Maybe<Int_Comparison_Exp>;
+  tag?: Maybe<Tag_Bool_Exp>;
+  tag_id?: Maybe<Int_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+};
+
+export type Feed_Tag_Order_By = {
+  created_at?: Maybe<Order_By>;
+  feed?: Maybe<Feed_Order_By>;
+  feed_id?: Maybe<Order_By>;
+  tag?: Maybe<Tag_Order_By>;
+  tag_id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+export enum Feed_Tag_Select_Column {
+  CreatedAt = 'created_at',
+  FeedId = 'feed_id',
+  TagId = 'tag_id',
   UpdatedAt = 'updated_at'
 }
 
@@ -80,11 +129,11 @@ export enum Order_By {
   DescNullsLast = 'desc_nulls_last'
 }
 
-export type Posts = {
-   __typename?: 'posts';
+export type Post = {
+   __typename?: 'post';
   created_at: Scalars['timestamptz'];
   description?: Maybe<Scalars['String']>;
-  feed?: Maybe<Feeds>;
+  feed?: Maybe<Feed>;
   feed_id: Scalars['Int'];
   guid?: Maybe<Scalars['String']>;
   id: Scalars['Int'];
@@ -95,13 +144,13 @@ export type Posts = {
   url: Scalars['String'];
 };
 
-export type Posts_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Posts_Bool_Exp>>>;
-  _not?: Maybe<Posts_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Posts_Bool_Exp>>>;
+export type Post_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Post_Bool_Exp>>>;
+  _not?: Maybe<Post_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Post_Bool_Exp>>>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   description?: Maybe<String_Comparison_Exp>;
-  feed?: Maybe<Feeds_Bool_Exp>;
+  feed?: Maybe<Feed_Bool_Exp>;
   feed_id?: Maybe<Int_Comparison_Exp>;
   guid?: Maybe<String_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
@@ -112,10 +161,10 @@ export type Posts_Bool_Exp = {
   url?: Maybe<String_Comparison_Exp>;
 };
 
-export type Posts_Order_By = {
+export type Post_Order_By = {
   created_at?: Maybe<Order_By>;
   description?: Maybe<Order_By>;
-  feed?: Maybe<Feeds_Order_By>;
+  feed?: Maybe<Feed_Order_By>;
   feed_id?: Maybe<Order_By>;
   guid?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -126,7 +175,7 @@ export type Posts_Order_By = {
   url?: Maybe<Order_By>;
 };
 
-export enum Posts_Select_Column {
+export enum Post_Select_Column {
   CreatedAt = 'created_at',
   Description = 'description',
   FeedId = 'feed_id',
@@ -141,37 +190,70 @@ export enum Posts_Select_Column {
 
 export type Query_Root = {
    __typename?: 'query_root';
-  feeds: Array<Feeds>;
-  feeds_by_pk?: Maybe<Feeds>;
-  posts: Array<Posts>;
-  posts_by_pk?: Maybe<Posts>;
+  feed: Array<Feed>;
+  feed_by_pk?: Maybe<Feed>;
+  feed_tag: Array<Feed_Tag>;
+  feed_tag_by_pk?: Maybe<Feed_Tag>;
+  post: Array<Post>;
+  post_by_pk?: Maybe<Post>;
+  tag: Array<Tag>;
+  tag_by_pk?: Maybe<Tag>;
 };
 
 
-export type Query_RootFeedsArgs = {
-  distinct_on?: Maybe<Array<Feeds_Select_Column>>;
+export type Query_RootFeedArgs = {
+  distinct_on?: Maybe<Array<Feed_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Feeds_Order_By>>;
-  where?: Maybe<Feeds_Bool_Exp>;
+  order_by?: Maybe<Array<Feed_Order_By>>;
+  where?: Maybe<Feed_Bool_Exp>;
 };
 
 
-export type Query_RootFeeds_By_PkArgs = {
+export type Query_RootFeed_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-export type Query_RootPostsArgs = {
-  distinct_on?: Maybe<Array<Posts_Select_Column>>;
+export type Query_RootFeed_TagArgs = {
+  distinct_on?: Maybe<Array<Feed_Tag_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Posts_Order_By>>;
-  where?: Maybe<Posts_Bool_Exp>;
+  order_by?: Maybe<Array<Feed_Tag_Order_By>>;
+  where?: Maybe<Feed_Tag_Bool_Exp>;
 };
 
 
-export type Query_RootPosts_By_PkArgs = {
+export type Query_RootFeed_Tag_By_PkArgs = {
+  feed_id: Scalars['Int'];
+  tag_id: Scalars['Int'];
+};
+
+
+export type Query_RootPostArgs = {
+  distinct_on?: Maybe<Array<Post_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Post_Order_By>>;
+  where?: Maybe<Post_Bool_Exp>;
+};
+
+
+export type Query_RootPost_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Query_RootTagArgs = {
+  distinct_on?: Maybe<Array<Tag_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Tag_Order_By>>;
+  where?: Maybe<Tag_Bool_Exp>;
+};
+
+
+export type Query_RootTag_By_PkArgs = {
   id: Scalars['Int'];
 };
 
@@ -195,39 +277,115 @@ export type String_Comparison_Exp = {
 
 export type Subscription_Root = {
    __typename?: 'subscription_root';
-  feeds: Array<Feeds>;
-  feeds_by_pk?: Maybe<Feeds>;
-  posts: Array<Posts>;
-  posts_by_pk?: Maybe<Posts>;
+  feed: Array<Feed>;
+  feed_by_pk?: Maybe<Feed>;
+  feed_tag: Array<Feed_Tag>;
+  feed_tag_by_pk?: Maybe<Feed_Tag>;
+  post: Array<Post>;
+  post_by_pk?: Maybe<Post>;
+  tag: Array<Tag>;
+  tag_by_pk?: Maybe<Tag>;
 };
 
 
-export type Subscription_RootFeedsArgs = {
-  distinct_on?: Maybe<Array<Feeds_Select_Column>>;
+export type Subscription_RootFeedArgs = {
+  distinct_on?: Maybe<Array<Feed_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Feeds_Order_By>>;
-  where?: Maybe<Feeds_Bool_Exp>;
+  order_by?: Maybe<Array<Feed_Order_By>>;
+  where?: Maybe<Feed_Bool_Exp>;
 };
 
 
-export type Subscription_RootFeeds_By_PkArgs = {
+export type Subscription_RootFeed_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
-export type Subscription_RootPostsArgs = {
-  distinct_on?: Maybe<Array<Posts_Select_Column>>;
+export type Subscription_RootFeed_TagArgs = {
+  distinct_on?: Maybe<Array<Feed_Tag_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Posts_Order_By>>;
-  where?: Maybe<Posts_Bool_Exp>;
+  order_by?: Maybe<Array<Feed_Tag_Order_By>>;
+  where?: Maybe<Feed_Tag_Bool_Exp>;
 };
 
 
-export type Subscription_RootPosts_By_PkArgs = {
+export type Subscription_RootFeed_Tag_By_PkArgs = {
+  feed_id: Scalars['Int'];
+  tag_id: Scalars['Int'];
+};
+
+
+export type Subscription_RootPostArgs = {
+  distinct_on?: Maybe<Array<Post_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Post_Order_By>>;
+  where?: Maybe<Post_Bool_Exp>;
+};
+
+
+export type Subscription_RootPost_By_PkArgs = {
   id: Scalars['Int'];
 };
+
+
+export type Subscription_RootTagArgs = {
+  distinct_on?: Maybe<Array<Tag_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Tag_Order_By>>;
+  where?: Maybe<Tag_Bool_Exp>;
+};
+
+
+export type Subscription_RootTag_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+export type Tag = {
+   __typename?: 'tag';
+  created_at: Scalars['timestamptz'];
+  feed_tags: Array<Feed_Tag>;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+};
+
+
+export type TagFeed_TagsArgs = {
+  distinct_on?: Maybe<Array<Feed_Tag_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Feed_Tag_Order_By>>;
+  where?: Maybe<Feed_Tag_Bool_Exp>;
+};
+
+export type Tag_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Tag_Bool_Exp>>>;
+  _not?: Maybe<Tag_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Tag_Bool_Exp>>>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  feed_tags?: Maybe<Feed_Tag_Bool_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
+  name?: Maybe<String_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+};
+
+export type Tag_Order_By = {
+  created_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+export enum Tag_Select_Column {
+  CreatedAt = 'created_at',
+  Id = 'id',
+  Name = 'name',
+  UpdatedAt = 'updated_at'
+}
 
 
 export type Timestamptz_Comparison_Exp = {
@@ -242,14 +400,25 @@ export type Timestamptz_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['timestamptz']>>;
 };
 
+export type TagsQueryVariables = {};
+
+
+export type TagsQuery = (
+  { __typename?: 'query_root' }
+  & { tags: Array<(
+    { __typename?: 'tag' }
+    & Pick<Tag, 'id' | 'name'>
+  )> }
+);
+
 export type FeedsQueryVariables = {};
 
 
 export type FeedsQuery = (
   { __typename?: 'query_root' }
   & { feeds: Array<(
-    { __typename?: 'feeds' }
-    & Pick<Feeds, 'id' | 'self_url' | 'rss_url' | 'title' | 'created_at' | 'description'>
+    { __typename?: 'feed' }
+    & Pick<Feed, 'id' | 'self_url' | 'rss_url' | 'title' | 'created_at' | 'description'>
   )> }
 );
 
@@ -258,16 +427,55 @@ export type PostsQueryVariables = {};
 
 export type PostsQuery = (
   { __typename?: 'query_root' }
-  & { posts: Array<(
-    { __typename?: 'posts' }
-    & Pick<Posts, 'id' | 'title' | 'url' | 'description' | 'feed_id' | 'image' | 'published_at'>
+  & { post: Array<(
+    { __typename?: 'post' }
+    & Pick<Post, 'id' | 'title' | 'url' | 'description' | 'feed_id' | 'image' | 'published_at'>
   )> }
 );
 
 
+export const TagsDocument = gql`
+    query Tags {
+  tags: tag {
+    id
+    name
+  }
+}
+    `;
+export type TagsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<TagsQuery, TagsQueryVariables>, 'query'>;
+
+    export const TagsComponent = (props: TagsComponentProps) => (
+      <ApolloReactComponents.Query<TagsQuery, TagsQueryVariables> query={TagsDocument} {...props} />
+    );
+    
+
+/**
+ * __useTagsQuery__
+ *
+ * To run a query within a React component, call `useTagsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTagsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTagsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useTagsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<TagsQuery, TagsQueryVariables>) {
+        return ApolloReactHooks.useQuery<TagsQuery, TagsQueryVariables>(TagsDocument, baseOptions);
+      }
+export function useTagsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<TagsQuery, TagsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<TagsQuery, TagsQueryVariables>(TagsDocument, baseOptions);
+        }
+export type TagsQueryHookResult = ReturnType<typeof useTagsQuery>;
+export type TagsLazyQueryHookResult = ReturnType<typeof useTagsLazyQuery>;
+export type TagsQueryResult = ApolloReactCommon.QueryResult<TagsQuery, TagsQueryVariables>;
 export const FeedsDocument = gql`
     query Feeds {
-  feeds {
+  feeds: feed {
     id
     self_url
     rss_url
@@ -310,7 +518,7 @@ export type FeedsLazyQueryHookResult = ReturnType<typeof useFeedsLazyQuery>;
 export type FeedsQueryResult = ApolloReactCommon.QueryResult<FeedsQuery, FeedsQueryVariables>;
 export const PostsDocument = gql`
     query Posts {
-  posts(order_by: {created_at: asc}, limit: 10) {
+  post(order_by: {created_at: asc}, limit: 10) {
     id
     title
     url

@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
-import { Tag } from '#/types/api.types';
+import { Tag } from '#/gql/codegen';
 
 interface ActiveTagContext {
   activeTag: Tag | undefined;
@@ -8,7 +8,7 @@ interface ActiveTagContext {
 
 const defaultValue = {
   activeTag: undefined,
-  setActiveTag: () => {},
+  setActiveTag: () => { },
 };
 
 const ActiveTagContext = createContext<ActiveTagContext>(defaultValue);

@@ -1,5 +1,5 @@
 query Posts {
-  posts(order_by: { created_at: asc }, limit: 10) {
+  post(order_by: { created_at: asc }, limit: 10) {
     id
     title
     url
