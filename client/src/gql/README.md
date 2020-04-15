@@ -4,7 +4,7 @@ Graphql Codegen handles generating typescript types and react-apollo hooks from 
 
 1. Make sure the hasura and postgres containers are up: `docker-compose up -d`
 2. Run `yarn generate`
-3. Output is in ./client/src/gql/codegen.tsx
+3. Output is in ./client/src/gql/
 
 Autogeneration is configured in `codegen.yml`. Docs here: https://github.com/dotansimha/graphql-code-generator
 

@@ -11,6 +11,7 @@ $cc-light: #fffae1;
   --primary: #{$cc-red};
   --secondary: #{$cc-blue};
   --background: #{$cc-light};
+  --dark: #{$cc-dark};
 }
 
 // Update Bulma's global variables
@@ -28,3 +29,9 @@ $text: $cc-dark;
 @import '../../../node_modules/bulma/sass/elements/button.sass';
 @import '../../../node_modules/bulma/sass/elements/title.sass';
 @import '../../../node_modules/bulma/sass/elements/title.sass';
+
+// Undo some of bulma's dumb styles
+
+a {
+  color: initial;
+}

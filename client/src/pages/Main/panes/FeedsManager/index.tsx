@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'linaria';
-import { useFeedsQuery } from '#/gql/codegen';
+import { useFeedsQuery } from '#/gql/generated';
 import FeedBlock from './FeedBlock';
 
 interface Props { }

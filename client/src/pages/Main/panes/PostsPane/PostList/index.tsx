@@ -1,5 +1,5 @@
 import React from 'react';
-import { Post } from '#/gql/codegen';
+import { Post } from '#/gql/generated';
 import PostListItem from './PostListItem';
 
 interface Props {

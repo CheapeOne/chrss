@@ -1,31 +1,25 @@
 import { css } from 'linaria';
-import cn from 'classnames';
 import React from 'react';
-import { Tag } from '#/gql/codegen';
+import { NavLink } from 'react-router-dom';
+import { Tag } from '#/gql/fragments';
 
 interface Props {
-  isActive: boolean;
-  onClick: (tag: Tag) => void;
   tag: Tag;
 }
 
-const TagItem: React.FC<Props> = ({ tag, onClick, isActive }) => {
-  const handleClick = () => {
-    onClick(tag);
-  };
+const TagItem: React.FC<Props> = ({ tag }) => {
+  const link = `/tags/${tag.name}/${tag.id}`;
 
   return (
-    <div
-      className={cn(Wrapper, { [Active]: isActive })}
-      onClick={handleClick}
-    >
+    <NavLink to={link} className={Wrapper} activeClassName={Active}>
       <span className={ActiveIcon}>#</span>
       {tag.name}
-    </div>
+    </NavLink>
   );
 };
 
 const Wrapper = css`
+  display: block;
   font-family: 'iosevka';
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -42,7 +36,7 @@ const ActiveIcon = css`
 `;
 
 const Active = css`
-  color: var(--primary);
+  color: var(--primary) !important;
   font-style: italic;
 
   .${ActiveIcon} {

@@ -1,7 +1,7 @@
 schema: http://localhost:8080/v1/graphql
 documents: ./client/src/**/*.gql
 generates:
-  client/src/gql/codegen.tsx:
+  client/src/gql/generated.tsx:
     plugins:
       - typescript
       - typescript-operations

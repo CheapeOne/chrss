@@ -1,15 +1,14 @@
-import React from 'react';
-import Navbar from './Navbar';
-import { ActiveTagProvider } from '#/contexts/ActiveTagContext';
-import Sidebar from './Sidebar';
 import { css } from 'linaria';
+import React from 'react';
+import { Route, RouteComponentProps, Switch } from 'react-router-dom';
+import { ActiveTagProvider } from '#/contexts/ActiveTagContext';
+import Navbar from './Navbar';
 import * as panes from './panes';
+import Sidebar from './Sidebar';
 
-import { Switch, Route, RouteComponentProps } from 'react-router-dom';
+type Props = RouteComponentProps;
 
-interface Props extends RouteComponentProps { }
-
-const Main: React.FC<Props> = (props) => {
+const Main: React.FC<Props> = () => {
   return (
     <ActiveTagProvider>
       <Navbar />
@@ -19,8 +18,9 @@ const Main: React.FC<Props> = (props) => {
         </div>
         <div className={Pane}>
           <Switch>
-            <Route path="/all-feeds" component={panes.FeedsManager} />
             <Route path="/" component={panes.PostsPane} />
+            <Route path="/tags/:name/:id" component={panes.PostsPane} />
+            <Route path="/feeds/:feed" component={panes.PostsPane} />
           </Switch>
         </div>
       </div>
@@ -29,9 +29,12 @@ const Main: React.FC<Props> = (props) => {
 };
 
 const Content = css`
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  margin: 2rem auto;
+  max-width: 1200px;
+  column-gap: 5rem;
+  padding: 0 1rem;
 `;
 
 const Pane = css`

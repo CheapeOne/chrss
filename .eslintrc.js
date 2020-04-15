@@ -2,14 +2,14 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
   parserOptions: {
     ecmaVersion: 2020,
   },
-  plugins: ['@typescript-eslint', 'simple-import-sort'],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'simple-import-sort'],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -25,7 +25,10 @@ module.exports = {
     ],
     'sort-imports': 'off',
     'import/order': 'off',
+    'react/prop-types': 'off',
     '@typescript-eslint/camelcase': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/no-empty-interface': 'off'
   },
   overrides: [
     {

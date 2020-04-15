@@ -407,8 +407,13 @@ export type TagsQuery = (
   { __typename?: 'query_root' }
   & { tags: Array<(
     { __typename?: 'tag' }
-    & Pick<Tag, 'id' | 'name'>
+    & TagFragment
   )> }
+);
+
+export type TagFragment = (
+  { __typename?: 'tag' }
+  & Pick<Tag, 'id' | 'name'>
 );
 
 export type FeedsQueryVariables = {};
@@ -433,15 +438,19 @@ export type PostsQuery = (
   )> }
 );
 
-
+export const TagFragmentDoc = gql`
+    fragment Tag on tag {
+  id
+  name
+}
+    `;
 export const TagsDocument = gql`
     query Tags {
   tags: tag {
-    id
-    name
+    ...Tag
   }
 }
-    `;
+    ${TagFragmentDoc}`;
 export type TagsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<TagsQuery, TagsQueryVariables>, 'query'>;
 
     export const TagsComponent = (props: TagsComponentProps) => (

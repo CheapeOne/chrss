@@ -1,6 +1,10 @@
 query Tags {
   tags: tag {
-    id
-    name
+    ...Tag
   }
+}
+
+fragment Tag on tag {
+  id
+  name
 }
