@@ -14,10 +14,10 @@ const Sidebar: React.FC<Props> = () => {
   }
 
   return (
-    <div className={Wrapper}>
+    <div>
       <Header />
-      <AllFeedsLink />
-      <div>
+      <div className={List}>
+        <AllFeedsLink />
         {data.tags.map((tag) => (
           <TagItem tag={tag} key={tag.id} />
         ))}
@@ -26,7 +26,7 @@ const Sidebar: React.FC<Props> = () => {
   );
 };
 
-const Wrapper = css`
+const List = css`
   & a {
     color: #777;
   }

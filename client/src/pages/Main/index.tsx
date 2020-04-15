@@ -18,9 +18,10 @@ const Main: React.FC<Props> = () => {
         </div>
         <div className={Pane}>
           <Switch>
-            <Route path="/" component={panes.PostsPane} />
             <Route path="/tags/:name/:id" component={panes.PostsPane} />
+            <Route path="/feeds/manage" component={panes.FeedsManager} />
             <Route path="/feeds/:feed" component={panes.PostsPane} />
+            <Route path="/" component={panes.PostsPane} />
           </Switch>
         </div>
       </div>
