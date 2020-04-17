@@ -6,7 +6,7 @@ import AddFeedButton from './AddFeedButton';
 
 interface Props {}
 
-const Header: React.FC<Props> = (props) => {
+const Header: React.FC<Props> = () => {
   return (
     <div className={Wrapper}>
       <div>Feeds</div>

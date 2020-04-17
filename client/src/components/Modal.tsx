@@ -22,11 +22,11 @@ const Modal: React.FC<Props> = (props) => {
       <div className="modal-content">
         <div className={Box}>{props.children}</div>
       </div>
-      <button
+      {/* <button
         className="modal-close is-large"
         aria-label="close"
         onClick={props.close}
-      ></button>
+      ></button> */}
     </div>
   );
 };
@@ -38,7 +38,7 @@ const Box = css`
     0 0 0 1px rgba(10, 10, 10, 0.02);
   color: #4a4a4a;
   display: block;
-  padding: 1.25rem;
+  padding: 2rem;
 `;
 
 export default Modal;

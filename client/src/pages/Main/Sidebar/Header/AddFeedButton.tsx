@@ -3,21 +3,20 @@ import React, { useState } from 'react';
 import { PlusSquare } from 'react-feather';
 import AddFeed from '#/components/forms/AddFeed';
 import Modal from '#/components/Modal';
+import useModalControls from '#/hooks/useModalControls';
 
 interface Props {}
 
-const AddFeedButton: React.FC<Props> = (props) => {
-  const [modalActive, setModalActive] = useState(true);
+const AddFeedButton: React.FC<Props> = () => {
+  const [modalActive, open, close] = useModalControls();
+
+  const onSubmit = () => {};
 
   return (
     <div>
-      <PlusSquare
-        className={Button}
-        onClick={(): void => setModalActive(true)}
-      />
-      <Modal active={modalActive} close={(): void => setModalActive(false)}>
-        <div>Ahhh!</div>
-        <AddFeed />
+      <PlusSquare className={Button} onClick={open} />
+      <Modal active={modalActive} close={close}>
+        <AddFeed onSubmit={onSubmit} onCancel={close} />
       </Modal>
     </div>
   );

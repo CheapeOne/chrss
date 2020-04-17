@@ -5,7 +5,7 @@ import FeedBlock from './FeedBlock';
 
 interface Props {}
 
-const FeedsManager = (props: Props) => {
+const FeedsManager: React.FC<Props> = (props) => {
   const { data, loading, error } = useFeedsQuery();
 
   if (loading) return <div className={Centered}>Loading...</div>;
@@ -14,11 +14,11 @@ const FeedsManager = (props: Props) => {
   return (
     <div>
       <h2 className="title is-3">FeedManager</h2>
-      {/* <div>
+      <div>
         {data.feeds.map((feed) => (
-          <FeedBlock feed={feed} />
+          <FeedBlock feed={feed} key={feed.id} />
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };
