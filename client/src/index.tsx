@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import Router from './Router';
 import '#/styles/theme.global.scss';
+import '#/styles/fonts.global.scss';
 import client from './gql';
 
 const App: React.FC = () => {

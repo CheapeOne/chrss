@@ -8,7 +8,7 @@ const mockTags = [
     name: 'comics',
   },
   {
-    id: 3,
+    i d: 3,
     name: 'videos',
   },
   {

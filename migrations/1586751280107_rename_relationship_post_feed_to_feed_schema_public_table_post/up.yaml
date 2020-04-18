@@ -1,0 +1,7 @@
+- args:
+    name: post_feed
+    new_name: feed
+    table:
+      name: post
+      schema: public
+  type: rename_relationship

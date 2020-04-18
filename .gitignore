@@ -21,3 +21,7 @@ docker-compose-override.yml
 
 # Hasura
 config.yaml
+
+pgdata
+
+apollo.config.js

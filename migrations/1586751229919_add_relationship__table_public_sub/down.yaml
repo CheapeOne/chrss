@@ -1,0 +1,6 @@
+- args:
+    relationship: feed
+    table:
+      name: sub
+      schema: public
+  type: drop_relationship

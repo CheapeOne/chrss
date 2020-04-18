@@ -1,0 +1,10 @@
+query Tags {
+  tags: tag {
+    ...Tag
+  }
+}
+
+fragment Tag on tag {
+  id
+  name
+}

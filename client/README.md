@@ -5,7 +5,9 @@ Dependencies:
 - React
 - Typescript
 - Apollo Graphql
-- Bulma
+- Graphql Codegen: https://github.com/dotansimha/graphql-code-generator
+- Linaria: Zero runtime CSS in JS
+- Bulma: CSS framework
 - Lodash
-- Linaria
 - Classnames
+- React Feather: Icons

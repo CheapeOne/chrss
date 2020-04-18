@@ -1,0 +1,16 @@
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - created_at
+      - updated_at
+      - feed_id
+      - tag_id
+      computed_fields: []
+      filter: {}
+      limit: null
+    role: anonymous
+    table:
+      name: feed_tag
+      schema: public
+  type: create_select_permission

@@ -71,8 +71,9 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: './dist',
     port: 7000,
+    contentBase: path.resolve(__dirname, './assets'),
+    contentBasePublicPath: '/assets',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.css', 'scss'],
