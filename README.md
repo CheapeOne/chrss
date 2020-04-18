@@ -11,4 +11,6 @@ There are 4 parts of the application:
    - It provides a UI to manage the DB, accessible with the command `hasura console`.
    - It also manages / autogenerates DB migrations, in the `/migrations` folder.
 4. Golang service (`/server` folder)
-   - handles auth, as well as background jobs like updating feeds with new posts.
+   - handles hasura actions, auth, as well as background jobs like updating feeds with new posts.
+   
+   See 3factor app architecture: https://3factor.app/
