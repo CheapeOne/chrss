@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/CheapeOne/chrss/server/database"
+	"github.com/CheapeOne/chrss/server/internal/database"
 	"github.com/mmcdole/gofeed"
 )
 

@@ -5,11 +5,13 @@ import FeedBlock from './FeedBlock';
 
 interface Props {}
 
-const FeedsManager: React.FC<Props> = (props) => {
+const FeedsManager: React.FC<Props> = () => {
   const { data, loading, error } = useFeedsQuery();
 
   if (loading) return <div className={Centered}>Loading...</div>;
   if (error || !data) return <div className={Centered}>Error!</div>;
+
+  debugger;
 
   return (
     <div>
