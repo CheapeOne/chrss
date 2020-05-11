@@ -6,10 +6,10 @@ interface Props {
   posts: Array<Post>;
 }
 
-const PostList: React.FC<Props> = props => {
+const PostList: React.FC<Props> = (props) => {
   return (
     <div>
-      {props.posts.map(post => (
+      {props.posts.map((post) => (
         <PostListItem key={post.id} post={post} />
       ))}
     </div>
