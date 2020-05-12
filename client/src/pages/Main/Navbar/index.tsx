@@ -1,16 +1,17 @@
 import { css } from 'linaria';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LoginButton from './LoginButton';
+import NavMenu from './NavMenu';
 
 const Navbar: React.FC = () => {
   return (
     <div className={Nav}>
+      <div></div>
       <Link to="/">
         <h1 className={`title ${Header}`}>/ chrss /</h1>
       </Link>
       <div className={Right}>
-        <LoginButton />
+        <NavMenu />
       </div>
     </div>
   );
@@ -20,8 +21,9 @@ const Nav = css`
   width: 100%;
   padding: 2rem;
   background: var(--primary);
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
 `;
 
 const Header = css`
@@ -29,10 +31,11 @@ const Header = css`
   font-family: 'iosevka';
   font-style: italic;
   font-weight: bold;
+  white-space: nowrap;
 `;
 
 const Right = css`
-  margin-left: auto;
+  justify-self: end;
 `;
 
 export default Navbar;

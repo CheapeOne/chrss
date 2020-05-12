@@ -1,14 +1,22 @@
 import React from 'react';
 import { ActiveTagProvider } from '#/contexts/ActiveTagContext';
-import { UserProvider } from '#/contexts/UserContext';
+import { AuthProvider } from '#/contexts/AuthContext';
 
-interface Props {}
+// Just hardcode for now 🙃
+const DOMAIN = 'chrss.auth0.com';
+const CLIENT_ID = 'R2fLIuhGdNkTNHfzXy5n1P1N3JWY974o';
+const REDIRECT_URI = 'http://localhost:7000';
 
-const Providers: React.FC<Props> = (props) => {
+const Providers: React.FC = (props) => {
   return (
-    <UserProvider>
+    <AuthProvider
+      domain={DOMAIN}
+      client_id={CLIENT_ID}
+      redirect_uri={REDIRECT_URI}
+      cacheLocation="localstorage"
+    >
       <ActiveTagProvider>{props.children}</ActiveTagProvider>
-    </UserProvider>
+    </AuthProvider>
   );
 };
 

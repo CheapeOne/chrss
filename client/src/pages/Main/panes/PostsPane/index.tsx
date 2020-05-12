@@ -1,9 +1,8 @@
 import React from 'react';
-import mockPosts from '#/mocks/posts';
 import PostList from './PostList';
 
 const PostsPane: React.FC = () => {
-  return <PostList posts={mockPosts} />;
+  return <PostList posts={[]} />;
 };
 
 export default PostsPane;

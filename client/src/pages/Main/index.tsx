@@ -1,16 +1,16 @@
 import { css } from 'linaria';
 import React from 'react';
 import { Route, RouteComponentProps, Switch } from 'react-router-dom';
-import { ActiveTagProvider } from '#/contexts/ActiveTagContext';
 import Navbar from './Navbar';
 import * as panes from './panes';
+import Providers from './Providers';
 import Sidebar from './Sidebar';
 
 type Props = RouteComponentProps;
 
 const Main: React.FC<Props> = () => {
   return (
-    <ActiveTagProvider>
+    <Providers>
       <Navbar />
       <div className={Content}>
         <div className="is-hidden-mobile">
@@ -25,7 +25,7 @@ const Main: React.FC<Props> = () => {
           </Switch>
         </div>
       </div>
-    </ActiveTagProvider>
+    </Providers>
   );
 };
 

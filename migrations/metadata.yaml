@@ -1,0 +1,142 @@
+version: 2
+tables:
+- table:
+    schema: public
+    name: feed
+  array_relationships:
+  - name: feed_tags
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: feed_tag
+        column_mapping:
+          id: feed_id
+  - name: subs
+    using:
+      foreign_key_constraint_on:
+        column: feed_id
+        table:
+          schema: public
+          name: sub
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - title
+      - description
+      - rss_url
+      - self_url
+      filter: {}
+      limit: 1000
+- table:
+    schema: public
+    name: feed_tag
+  object_relationships:
+  - name: feed
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: feed
+        column_mapping:
+          feed_id: id
+  - name: tag
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: tag
+        column_mapping:
+          tag_id: id
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - created_at
+      - updated_at
+      - feed_id
+      - tag_id
+      filter: {}
+- table:
+    schema: public
+    name: post
+  object_relationships:
+  - name: feed
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: feed
+        column_mapping:
+          feed_id: id
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - created_at
+      - description
+      - feed_id
+      - guid
+      - id
+      - image
+      - published_at
+      - title
+      - updated_at
+      - url
+      filter: {}
+      limit: 1000
+- table:
+    schema: public
+    name: sub
+  object_relationships:
+  - name: feed
+    using:
+      foreign_key_constraint_on: feed_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+- table:
+    schema: public
+    name: tag
+  array_relationships:
+  - name: feed_tags
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: feed_tag
+        column_mapping:
+          id: tag_id
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - name
+      filter: {}
+- table:
+    schema: public
+    name: user
+  array_relationships:
+  - name: subs
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: sub
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - email
+      - id
+      filter:
+        id:
+          _eq: X-Hasura-User-Id

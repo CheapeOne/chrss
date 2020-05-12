@@ -1,7 +1,7 @@
-import React from 'react';
-import { Post } from '#/types/api.types';
 import { css } from 'linaria';
-import LazyImage from '../../../components/LazyImage';
+import React from 'react';
+import LazyImage from '#/components/LazyImage';
+import { Post } from '#/gql/generated';
 
 interface Props {
   post: Post;
